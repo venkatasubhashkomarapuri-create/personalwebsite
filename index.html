@@ -3002,20 +3002,32 @@
 <h3 id="form-title">Send a Message</h3>
 <p id="form-subtitle">Fill out the form below and I'll get back to you as soon as possible.<br/></em></p>
 </div>
-<form class="contact-form" id="contactForm">
-<div class="form-row">
-<div class="form-group"><label for="firstName">First Name</label> <input id="firstName" name="firstName" placeholder="Your first name" type="text"/>
-</div>
-<div class="form-group"><label for="lastName">Last Name</label> <input id="lastName" name="lastName" placeholder="Your last name" type="text"/>
-</div>
-</div>
-<div class="form-group"><label for="email">Email</label> <input id="email" name="email" placeholder="john@example.com" type="email"/>
-</div>
-<div class="form-group"><label for="subject">Subject</label> <input id="subject" name="subject" placeholder="Let's collaborate on..." type="text"/>
-</div>
-<div class="form-group"><label for="message">Message</label> <textarea id="message" name="message" placeholder="Share your thoughts, ideas, or just say hello! I'm excited to hear from you." rows="6"></textarea>
-</div><button class="submit-btn" id="submitBtn" type="submit"> <span class="btn-text">Send Message</span> <span class="btn-icon">🚀</span> </button>
+<form id="contactForm" action="https://formspree.io/f/xanlggjn" method="POST">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Your email</label>
+      <input id="email" name="email" type="email" required />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
+
+  <!-- optional: hidden subject or reply-to -->
+  <input type="hidden" name="_subject" value="New message from portfolio site" />
+  <input type="hidden" name="_replyto" value="" />
+
+  <button type="submit" class="submit-btn" id="submitBtn">
+    Send Message
+  </button>
 </form>
+
 <div class="form-success" id="formSuccess" style="display: none;">
 <div class="success-icon">
          ✅
