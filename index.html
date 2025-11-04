@@ -4515,39 +4515,39 @@
             // document.body.removeChild(link);
         }
 
-        // Contact Form Functionality
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // // Contact Form Functionality
+        // document.getElementById('contactForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
             
-            const submitBtn = document.getElementById('submitBtn');
-            const formSuccess = document.getElementById('formSuccess');
-            const contactForm = document.getElementById('contactForm');
+        //     const submitBtn = document.getElementById('submitBtn');
+        //     const formSuccess = document.getElementById('formSuccess');
+        //     const contactForm = document.getElementById('contactForm');
             
-            // Show loading state
-            submitBtn.classList.add('loading');
-            submitBtn.querySelector('.btn-text').textContent = 'Sending...';
-            submitBtn.querySelector('.btn-icon').textContent = '⏳';
-            submitBtn.disabled = true;
+        //     // Show loading state
+        //     submitBtn.classList.add('loading');
+        //     submitBtn.querySelector('.btn-text').textContent = 'Sending...';
+        //     submitBtn.querySelector('.btn-icon').textContent = '⏳';
+        //     submitBtn.disabled = true;
             
-            // Simulate form submission (since we can't actually send emails from frontend)
-            setTimeout(() => {
-                // Hide form and show success message
-                contactForm.style.display = 'none';
-                formSuccess.style.display = 'block';
+        //     // Simulate form submission (since we can't actually send emails from frontend)
+        //     setTimeout(() => {
+        //         // Hide form and show success message
+        //         contactForm.style.display = 'none';
+        //         formSuccess.style.display = 'block';
                 
-                // Reset form after showing success
-                setTimeout(() => {
-                    contactForm.reset();
-                    contactForm.style.display = 'flex';
-                    formSuccess.style.display = 'none';
+        //         // Reset form after showing success
+        //         setTimeout(() => {
+        //             contactForm.reset();
+        //             contactForm.style.display = 'flex';
+        //             formSuccess.style.display = 'none';
                     
-                    // Reset button state
-                    submitBtn.classList.remove('loading');
-                    submitBtn.querySelector('.btn-text').textContent = 'Send Message';
-                    submitBtn.querySelector('.btn-icon').textContent = '🚀';
-                    submitBtn.disabled = false;
-                }, 4000);
-            }, 2000);
+        //             // Reset button state
+        //             submitBtn.classList.remove('loading');
+        //             submitBtn.querySelector('.btn-text').textContent = 'Send Message';
+        //             submitBtn.querySelector('.btn-icon').textContent = '🚀';
+        //             submitBtn.disabled = false;
+        //         }, 4000);
+        //     // }, 2000);
         });
 
         // Element SDK Configuration
