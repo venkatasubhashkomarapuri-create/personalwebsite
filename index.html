@@ -2349,6 +2349,39 @@
   }
 }
 
+/* Mobile nav visibility & stacking fix — paste at end of <style> */
+nav { position: relative; z-index: 1001; }
+.mobile-menu-btn { z-index: 1003; position: relative; }
+
+/* Ensure .nav-links is positioned and visible on mobile */
+@media (max-width: 768px) {
+  nav .nav-links {
+    display: none;                 /* default hidden */
+    position: absolute;            /* overlay below header */
+    top: calc(100% + 8px);         /* push slightly below header */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #ffffff;           /* choose page background color */
+    color: #1a365d;                /* link color */
+    flex-direction: column;
+    gap: 0;
+    padding: 0.75rem 0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    z-index: 2000;                 /* ensure it's above page content */
+    pointer-events: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Show when active */
+  nav .nav-links.active {
+    display: flex !important;
+  }
+
+  /* Make sure the button is clickable on small touch devices */
+  .mobile-menu-btn { touch-action: manipulation; }
+}
+
 </style>
 <style>@view-transition { navigation: auto; }</style>
 <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -2384,8 +2417,8 @@
         Tap and explore around, and let's connect to build something meaningful.
        </div>
 <div class="intro-summary">
-  Current Graduate student at Duke interested in driving innovation, growth, transformation,
-  and more importantly, a product towards market and success.
+  Current Graduate student at Duke passionate about driving growth, leading transformation,
+  and guiding products to market success.
 </div>
 <div class="resume-section"><a class="resume-btn" href="https://docs.google.com/document/d/1H1-3AZmGAaQfl0s0quI0KJmAAUPX2aybsz1hpVgRHCI/edit?usp=sharing" id="resume-btn" rel="noopener noreferrer" target="_blank"> <span class="resume-icon">📄</span> <span class="resume-text">Professional Resume</span> <span class="download-icon">↗️</span> </a>
 </div>
@@ -2992,7 +3025,7 @@
          </div>
 <div class="cta-content">
 <h4>Let's Build Something Meaningful</h4>
-<p>From engineering innovations to strategic consulting, from sports adventures to creative projects every great collaboration starts with a conversation.</p>
+<p>From engineering innovations to business ideas, from sports adventures to creative projects. Every great collaboration starts with a tiny conversation!</p>
 </div>
 </div>
 </div>
@@ -4515,39 +4548,39 @@
             // document.body.removeChild(link);
         }
 
-        // // Contact Form Functionality
-        // document.getElementById('contactForm').addEventListener('submit', function(e) {
-        //     e.preventDefault();
+        // Contact Form Functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-        //     const submitBtn = document.getElementById('submitBtn');
-        //     const formSuccess = document.getElementById('formSuccess');
-        //     const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formSuccess = document.getElementById('formSuccess');
+            const contactForm = document.getElementById('contactForm');
             
-        //     // Show loading state
-        //     submitBtn.classList.add('loading');
-        //     submitBtn.querySelector('.btn-text').textContent = 'Sending...';
-        //     submitBtn.querySelector('.btn-icon').textContent = '⏳';
-        //     submitBtn.disabled = true;
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.querySelector('.btn-text').textContent = 'Sending...';
+            submitBtn.querySelector('.btn-icon').textContent = '⏳';
+            submitBtn.disabled = true;
             
-        //     // Simulate form submission (since we can't actually send emails from frontend)
-        //     setTimeout(() => {
-        //         // Hide form and show success message
-        //         contactForm.style.display = 'none';
-        //         formSuccess.style.display = 'block';
+            // Simulate form submission (since we can't actually send emails from frontend)
+            setTimeout(() => {
+                // Hide form and show success message
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'block';
                 
-        //         // Reset form after showing success
-        //         setTimeout(() => {
-        //             contactForm.reset();
-        //             contactForm.style.display = 'flex';
-        //             formSuccess.style.display = 'none';
+                // Reset form after showing success
+                setTimeout(() => {
+                    contactForm.reset();
+                    contactForm.style.display = 'flex';
+                    formSuccess.style.display = 'none';
                     
-        //             // Reset button state
-        //             submitBtn.classList.remove('loading');
-        //             submitBtn.querySelector('.btn-text').textContent = 'Send Message';
-        //             submitBtn.querySelector('.btn-icon').textContent = '🚀';
-        //             submitBtn.disabled = false;
-        //         }, 4000);
-        //     // }, 2000);
+                    // Reset button state
+                    submitBtn.classList.remove('loading');
+                    submitBtn.querySelector('.btn-text').textContent = 'Send Message';
+                    submitBtn.querySelector('.btn-icon').textContent = '🚀';
+                    submitBtn.disabled = false;
+                }, 4000);
+            }, 2000);
         });
 
         // Element SDK Configuration
@@ -4675,4 +4708,26 @@
         }
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99953f03a076126a',t:'MTc2MjI3MTIwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>
+  // Safe toggle (adds fallback listeners and logs)
+  function toggleMobileMenu() {
+    console.log('toggleMobileMenu called');
+    const navLinks = document.getElementById('navLinks');
+    if (!navLinks) return console.warn('navLinks not found');
+    navLinks.classList.toggle('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.querySelector('.mobile-menu-btn');
+    if (btn && !btn.hasListenerAdded) {
+      btn.addEventListener('click', toggleMobileMenu);
+      btn.addEventListener('touchstart', function(e){
+        // prevent double triggers on some devices
+        e.preventDefault();
+        toggleMobileMenu();
+      }, {passive:false});
+      btn.hasListenerAdded = true;
+    }
+  });
+</script>
 </html>
